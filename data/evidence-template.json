@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Template for adding evidence without silently converting claims into facts.",
+  "fields": {
+    "claim": "Short neutral claim",
+    "sourceTitle": "Title",
+    "sourceType": "primary | systematic review | study | official guidance | independent reporting | lived-experience perspective",
+    "url": "https://\u2026",
+    "published": "YYYY-MM-DD or year",
+    "population": "Who/where this applies to",
+    "finding": "What the source actually supports",
+    "limitations": "Important caveats",
+    "reviewedBy": "optional",
+    "reviewedAt": "optional ISO date"
+  }
+}

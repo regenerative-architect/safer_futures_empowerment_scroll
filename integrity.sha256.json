@@ -1,0 +1,27 @@
+{
+  "algorithm": "SHA-256",
+  "note": "Integrity checks detect accidental/unauthorized byte changes; they do not establish authorship.",
+  "files": {
+    "LICENSE.txt": "866c4a7e35de63ed11765281d7c3f16ec3bf443b85ffd4077b7f3dfdd6c9439c",
+    "README.md": "83e36c6480d7bfd0e023dfb29f1516e428edb157aaf7636f6f80eeb9b75d2f10",
+    "assets/icon.svg": "5523c35d0862eddd6030af7b085b4c490d1a678f85317c1c6cdb9053c25f9de7",
+    "assets/styles.css": "b9c52667f9cb4f6d7e390828053da137141c79ad69b8a7b9cffc86900c1cd0e0",
+    "data/evidence-template.json": "e571eb2d01d3cb5bf84723998cbe74383adb4f14220c1f8fee645cf18a7463b8",
+    "docs/ARCHITECTURE.md": "dc801cbaf4fdfd3479d5471a8c751a0afa2f509d07102a4a220c84a26d2efa0a",
+    "docs/ATTRIBUTIONS.md": "f1f1a3ab50e14705669c0628a8d24a065c329d736ec798ab0db96b776ecb361c",
+    "docs/BUILD_TEST_REPORT.json": "d1d2015ec8287d9630f883c2e62072550e0b43598eb0a3ccc63aee70752e6f68",
+    "docs/DEPLOYMENT.md": "245b30e62935cd7cddf4354e6d2d548ab938479c0b90358bd49efa8581d896e8",
+    "docs/SAFETY_AND_SCOPE.md": "67e68361118ade214f729a9be5e959d45c3b124bfaccca93d84dc5b700a8fafb",
+    "docs/STATIC_GUIDE.md": "c8665db25b1980bb9861799d5696380b0535cb50bfe4bd2ef094a9204706842c",
+    "docs/TEST_PLAN.md": "365f53fc67dbd941929a8103f7139981f1526a082e47bd386a7c77951f500cff",
+    "index.html": "12eb59c0de2d8eb129edbbc7c65446d9c11e65bb4f67f4d8266ca01868301d4f",
+    "js/app.js": "8d12a6a0c4e322245b53329008da1db9844b06d578b2375af3a7f219dd12a241",
+    "js/collaboration.js": "357907943a2f376d39d9acc84f44242ff0d9028bbe6ce7b336b4a0980baad841",
+    "js/data.js": "30ad62b35ac4b0e0777446e637478c54faf8444ccad47357ea45fc8b71c863f0",
+    "js/diagnostics.js": "862f34005fc23365d3442ab59c17a650acb12f6ad18d5670b2f5f08e943b64b0",
+    "js/planner.js": "30e75e57d8af477403c57a5004cdae7d9424a32cb1982493c800231ae16475bc",
+    "js/storage.js": "6a5a4a5d3a00d0aff32482d68b5b317ba026fa323e219381ff6fbe1fc5523de5",
+    "manifest.webmanifest": "d2fe337c66365e95818a0fa0a8fdd6b42af998d46d755e3321a808f5b5857051",
+    "sw.js": "c0d12387d5df48a6161173f0e3b4aa7a345e1c46a575ca451b53703e3cc5be27"
+  }
+}

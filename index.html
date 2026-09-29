@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Next-Gen Safeguarding & Empowerment OS: practical, privacy-respecting tools for challenges young people face.">
+  <title>Next-Gen Safeguarding & Empowerment OS</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to workspace</a>
+<noscript>
+  <div class="noscript"><strong>JavaScript is disabled.</strong> The core guide remains readable in
+    <a href="./docs/STATIC_GUIDE.md">docs/STATIC_GUIDE.md</a>. Interactive planners, saved state, diagnostics and progress tracking require JavaScript.
+  </div>
+</noscript>
+
+<div id="splash" class="splash" role="dialog" aria-modal="true" aria-labelledby="splash-title">
+  <div class="splash-stars" aria-hidden="true"></div>
+  <div class="splash-card">
+    <p class="eyebrow">Foster + Navi / Planetary Restoration Archive</p>
+    <h1 id="splash-title">Next-Gen Safeguarding & Empowerment OS</h1>
+    <p>Practical tools for resilience, safety, skills, belonging, creativity and future-building — without requiring an account, AI model or permanent connection.</p>
+    <div class="progress-track" aria-hidden="true"><i id="splash-progress"></i></div>
+    <p id="splash-status" class="muted" role="status" aria-live="polite">Preparing local workspace…</p>
+    <div class="button-row">
+      <button id="enter-app" class="primary">Enter workspace</button>
+      <label class="checkline"><input id="skip-splash" type="checkbox"> Skip splash next time</label>
+    </div>
+    <small>Fail-soft startup: optional capabilities cannot block access to the core tools.</small>
+  </div>
+</div>
+
+<header class="topbar">
+  <a class="brand" href="#overview" aria-label="Next-Gen OS home">
+    <span class="brand-mark">✦</span>
+    <span><strong>Next-Gen OS</strong><small>Safeguarding + empowerment</small></span>
+  </a>
+  <nav id="top-nav" class="topnav" aria-label="Primary"></nav>
+  <div class="top-actions">
+    <button id="global-search-button" class="icon-btn" title="Search" aria-label="Open search">⌕</button>
+    <button id="theme-toggle" class="icon-btn" title="Theme" aria-label="Toggle light and dark theme">◐</button>
+    <button id="motion-toggle" class="icon-btn" title="Motion" aria-label="Toggle motion effects">≈</button>
+    <button id="drawer-toggle" class="icon-btn mobile-only" aria-controls="side" aria-expanded="false" aria-label="Open navigation">☰</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside id="side" class="sidebar" aria-label="Workspace navigation">
+    <div class="status-card">
+      <div><span id="online-dot" class="dot"></span><strong id="online-label">Checking…</strong></div>
+      <small id="pwa-label">Offline capability pending</small>
+    </div>
+    <nav id="side-nav"></nav>
+    <div class="sidebar-footer">
+      <button id="export-state" class="secondary full">Export my data</button>
+      <label class="secondary full file-label">Import my data<input id="import-state" type="file" accept="application/json,.json"></label>
+      <button id="reset-state" class="ghost full">Selective reset</button>
+      <small>No account is required. Saved progress stays on this device unless you explicitly export it.</small>
+    </div>
+  </aside>
+
+  <main id="workspace" tabindex="-1">
+    <div id="breadcrumbs" class="breadcrumbs"></div>
+
+    <section id="overview" class="route active" data-route="overview">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">10 challenge domains · one coherent toolkit</p>
+          <h1>Turn “something is wrong” into a safe next step.</h1>
+          <p class="lead">Choose a challenge, use a focused tool, create a realistic action plan, save only what you want, and build progress without turning life into a score.</p>
+          <div class="button-row">
+            <a class="primary button-link" href="#domains">Explore the 10 domains</a>
+            <a class="secondary button-link" href="#planner">Build a plan</a>
+          </div>
+        </div>
+        <div id="constellation" class="constellation" aria-hidden="true"></div>
+      </div>
+
+      <div id="overview-stats" class="stats"></div>
+
+      <div class="grid three">
+        <article class="panel">
+          <h2>🧭 Agency-first</h2>
+          <p>The OS suggests options, tradeoffs and protective factors. It does not diagnose, coerce, shame, rank a person’s worth or make consequential choices for them.</p>
+        </article>
+        <article class="panel">
+          <h2>🛡️ Safety by design</h2>
+          <p>Private notes default to local storage. Public sharing, strangers, location tracking and hidden telemetry are deliberately absent.</p>
+        </article>
+        <article class="panel">
+          <h2>🔌 Useful offline</h2>
+          <p>The core guides, planner, checklists, logs and exports work without AI. Hosted deployments can be installed as a PWA after first successful load.</p>
+        </article>
+      </div>
+
+      <article class="panel">
+        <div class="section-split">
+          <div>
+            <h2>Start with what fits today</h2>
+            <p class="muted">Low energy is not a failure mode. Pick a task size that matches your capacity.</p>
+          </div>
+          <div class="energy-picker" role="group" aria-label="Available energy">
+            <button class="chip energy-choice" data-energy="1">1 · tiny step</button>
+            <button class="chip energy-choice" data-energy="2">2 · short task</button>
+            <button class="chip energy-choice" data-energy="3">3 · focused session</button>
+            <button class="chip energy-choice" data-energy="4">4 · project mode</button>
+          </div>
+        </div>
+        <div id="today-recommendation" class="recommendation">Choose an energy level to get a low-friction starting action.</div>
+      </article>
+
+      <article class="panel zero-harm">
+        <h2>Zero-Harm / Anti-Inversion</h2>
+        <p>Protective systems can become harmful when they surveil, shame, punish, manipulate, expose private data, or turn “safety” into control. This app therefore favors consent, reversibility, minimal data, age-appropriate trusted support, transparent logic and clear limits.</p>
+      </article>
+    </section>
+
+    <section id="domains" class="route" data-route="domains">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Challenge atlas</p>
+          <h1>Ten domains, each with practical tools</h1>
+          <p>Use search and filters to find a starting point. Open any domain for an overview, action ladder, protective factors, pitfalls and interactive tools.</p>
+        </div>
+        <div class="counter"><strong id="domain-count">10</strong><span>domains</span></div>
+      </div>
+      <div class="toolbar sticky-tools">
+        <label class="searchbox"><span>⌕</span><input id="domain-search" type="search" placeholder="Search stress, privacy, budgeting, careers, belonging…"></label>
+        <select id="domain-filter" aria-label="Filter by type">
+          <option value="all">All types</option>
+          <option value="self">Self</option>
+          <option value="social">Social</option>
+          <option value="systems">Systems</option>
+        </select>
+      </div>
+      <div id="domain-grid" class="domain-grid"></div>
+    </section>
+
+    <section id="domain-detail" class="route" data-route="domain-detail">
+      <div id="domain-detail-content"></div>
+    </section>
+
+    <section id="planner" class="route" data-route="planner">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Deterministic action engine</p>
+          <h1>Build a plan without an AI model</h1>
+          <p>Intent classification → protective-factor check → effort sizing → action ladder → risk checks → review loop. Same inputs produce the same plan.</p>
+        </div>
+      </div>
+      <div class="grid two">
+        <article class="panel">
+          <h2>Plan inputs</h2>
+          <label>Challenge area<select id="plan-domain"></select></label>
+          <label>What would “better” look like?<textarea id="plan-goal" rows="3" placeholder="Example: feel less overwhelmed before school and know who I can ask for help."></textarea></label>
+          <label>Time available<select id="plan-time">
+            <option value="5">5 minutes</option><option value="15">15 minutes</option><option value="30" selected>30 minutes</option><option value="60">1 hour</option><option value="week">A week</option>
+          </select></label>
+          <label>Energy right now<select id="plan-energy"><option value="1">1 · low</option><option value="2">2 · limited</option><option value="3" selected>3 · okay</option><option value="4">4 · strong</option></select></label>
+          <fieldset>
+            <legend>Support available</legend>
+            <div class="check-grid">
+              <label class="checkline"><input type="checkbox" name="support" value="trusted-person"> Trusted person</label>
+              <label class="checkline"><input type="checkbox" name="support" value="school"> School / educator</label>
+              <label class="checkline"><input type="checkbox" name="support" value="community"> Community group</label>
+              <label class="checkline"><input type="checkbox" name="support" value="professional"> Professional support</label>
+              <label class="checkline"><input type="checkbox" name="support" value="none"> Not sure yet</label>
+            </div>
+          </fieldset>
+          <label>Important constraint<textarea id="plan-constraint" rows="2" placeholder="Optional: money, privacy, transportation, family rules, disability, time…"></textarea></label>
+          <div class="button-row">
+            <button id="build-plan" class="primary">Build plan</button>
+            <button id="save-plan" class="secondary" disabled>Save plan</button>
+          </div>
+        </article>
+        <article class="panel output-panel">
+          <h2>Action plan</h2>
+          <div id="plan-output" class="plan-output" aria-live="polite">
+            <p class="muted">Your plan will appear here. Nothing is sent anywhere.</p>
+          </div>
+        </article>
+      </div>
+      <article class="panel">
+        <h2>Why deterministic first?</h2>
+        <p>For a safeguarding tool, predictable logic is a feature. You can inspect the rules, run the same plan again, and use the app even when local AI, WebGPU or the network is unavailable. AI can be added later as a clearly labeled optional drafting layer, never as the source of truth.</p>
+      </article>
+    </section>
+
+    <section id="dashboard" class="route" data-route="dashboard">
+      <div class="page-head"><div><p class="eyebrow">Progress without pressure</p><h1>My dashboard</h1><p>Track completed actions, saved plans and reflection notes. XP is optional and cosmetic; nothing important is gated.</p></div></div>
+      <div id="progress-cards" class="stats"></div>
+      <div class="grid two">
+        <article class="panel">
+          <div class="section-split"><h2>Quest board</h2><button id="regen-quests" class="secondary">Refresh suggestions</button></div>
+          <div id="quest-board" class="quest-board"></div>
+        </article>
+        <article class="panel">
+          <h2>Private reflection</h2>
+          <label>What helped?<textarea id="reflection-helped" rows="3"></textarea></label>
+          <label>What made things harder?<textarea id="reflection-hard" rows="3"></textarea></label>
+          <label>What is one next step?<textarea id="reflection-next" rows="2"></textarea></label>
+          <button id="save-reflection" class="primary">Save reflection locally</button>
+          <div id="reflection-list" class="timeline"></div>
+        </article>
+      </div>
+      <article class="panel">
+        <h2>Saved plans</h2>
+        <div id="saved-plans" class="timeline"></div>
+      </article>
+    </section>
+
+    <section id="resources" class="route" data-route="resources">
+      <div class="page-head"><div><p class="eyebrow">Evidence + support map</p><h1>Resource library</h1><p>Foundational guidance, questions to ask, and a template for adding verified local services without hard-coding stale listings.</p></div></div>
+      <div class="notice warning">
+        <strong>Urgent safety:</strong> this toolkit is not an emergency service. If someone is in immediate danger, contact local emergency services or a trusted responsible adult who can act now. For poisoning/overdose concerns, use the official poison-control/emergency service for your location.
+      </div>
+      <div id="resource-grid" class="grid two"></div>
+      <article class="panel">
+        <h2>Build a verified local support card</h2>
+        <p class="muted">Verify details directly with the provider before relying on them. The app stores this card only on your device.</p>
+        <div class="grid two compact-grid">
+          <label>Service name<input id="resource-name"></label>
+          <label>Who it is for<input id="resource-for"></label>
+          <label>Phone / contact<input id="resource-contact"></label>
+          <label>Website<input id="resource-url" placeholder="https://…"></label>
+          <label class="wide">Verification note<textarea id="resource-note" rows="2" placeholder="Verified on YYYY-MM-DD from official site / staff member…"></textarea></label>
+        </div>
+        <button id="save-resource" class="primary">Save local resource</button>
+        <div id="local-resources" class="timeline"></div>
+      </article>
+    </section>
+
+    <section id="collaboration" class="route" data-route="collaboration">
+      <div class="page-head"><div><p class="eyebrow">Trusted-circle collaboration</p><h1>Share progress without opening a stranger channel</h1><p>The live demo uses same-origin BroadcastChannel only. It is useful for classroom/lab demonstrations across tabs; it does not connect strangers or transmit over the internet.</p></div></div>
+      <div class="grid two">
+        <article class="panel">
+          <h2>Local room demo</h2>
+          <label>Room name<input id="room-name" value="trusted-circle"></label>
+          <label>Display name<input id="display-name" value="participant"></label>
+          <div class="button-row"><button id="join-room" class="primary">Join local room</button><button id="leave-room" class="secondary" disabled>Leave</button></div>
+          <div id="room-status" class="status-line">Not connected.</div>
+          <label>Message<input id="room-message" disabled placeholder="Only visible to same-origin tabs in this browser profile"></label>
+          <button id="send-room-message" class="secondary" disabled>Send</button>
+          <div id="room-log" class="chat-log" aria-live="polite"></div>
+        </article>
+        <article class="panel">
+          <h2>Production multiplayer safety gate</h2>
+          <ul class="checklist">
+            <li>Age-appropriate identity and consent model.</li>
+            <li>Moderation, reporting, rate limits and abuse response.</li>
+            <li>No public sharing of precise location, school schedule or sensitive personal data.</li>
+            <li>Durable membership/recovery layer when shared state matters.</li>
+            <li>Clear transport abstraction and reconnect/version rules.</li>
+            <li>Auditability without turning minors into surveillance subjects.</li>
+          </ul>
+          <p class="muted">The supplied code intentionally stops short of anonymous internet P2P. A production WebRTC/Trystero adapter belongs behind these controls.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="diagnostics" class="route" data-route="diagnostics">
+      <div class="page-head"><div><p class="eyebrow">Capability + failure diagnostics</p><h1>Know what this browser can actually do</h1><p>Core functionality should survive missing APIs. Deep GPU probing happens only when you explicitly request it.</p></div></div>
+      <div class="grid two">
+        <article class="panel">
+          <h2>Capability report</h2>
+          <div id="diagnostic-cards" class="diag-grid"></div>
+          <div class="button-row"><button id="run-diagnostics" class="primary">Refresh report</button><button id="deep-gpu" class="secondary">Run WebGPU probe</button></div>
+        </article>
+        <article class="panel">
+          <h2>Normalized diagnostic JSON</h2>
+          <pre id="diagnostic-output" class="log">No diagnostic run yet.</pre>
+          <div class="button-row"><button id="copy-diagnostic" class="secondary">Copy</button><button id="download-diagnostic" class="secondary">Download JSON</button></div>
+        </article>
+      </div>
+      <article class="panel">
+        <h2>Local-AI readiness (optional)</h2>
+        <p id="ai-readiness">Run diagnostics to estimate a sensible model-size tier. This does not download or load a model.</p>
+        <p class="muted">If a future WebLLM integration fails, the deterministic planner remains fully usable. A production AI adapter should expose model ID, runtime, load progress, memory errors, GPU-device loss and an explicit reset path.</p>
+      </article>
+    </section>
+
+    <section id="data" class="route" data-route="data">
+      <div class="page-head"><div><p class="eyebrow">Data sovereignty</p><h1>Your data, understandable and portable</h1><p>Review what is stored, export it, import a validated backup, or selectively reset it.</p></div></div>
+      <div class="grid two">
+        <article class="panel">
+          <h2>Storage inventory</h2>
+          <pre id="storage-inventory" class="log"></pre>
+          <button id="refresh-storage" class="secondary">Refresh inventory</button>
+        </article>
+        <article class="panel">
+          <h2>Selective reset</h2>
+          <div class="check-grid" id="reset-options">
+            <label class="checkline"><input type="checkbox" value="progress"> Progress / XP</label>
+            <label class="checkline"><input type="checkbox" value="plans"> Saved plans</label>
+            <label class="checkline"><input type="checkbox" value="reflections"> Reflections</label>
+            <label class="checkline"><input type="checkbox" value="resources"> Local resources</label>
+            <label class="checkline"><input type="checkbox" value="preferences"> Preferences</label>
+          </div>
+          <button id="perform-reset" class="danger">Reset selected data</button>
+        </article>
+      </div>
+      <article class="panel">
+        <h2>Schema + migration</h2>
+        <p>Exports carry a schema version. Imports are validated before replacing data; unknown top-level fields are preserved under <code>extensions</code> when possible so newer data is not silently destroyed by an older build.</p>
+      </article>
+    </section>
+
+    <section id="about" class="route" data-route="about">
+      <div class="page-head"><div><p class="eyebrow">Scope + transparency</p><h1>About this build</h1></div></div>
+      <div class="grid two">
+        <article class="panel">
+          <h2>What this is</h2>
+          <p>A practical learning and planning toolkit that translates ten broad youth challenges into small, inspectable actions, protective-factor prompts and locally saved artifacts.</p>
+        </article>
+        <article class="panel">
+          <h2>What this is not</h2>
+          <p>It is not a therapist, doctor, emergency service, financial adviser, legal adviser, social-service eligibility engine, political persuasion system or covert monitoring tool.</p>
+        </article>
+      </div>
+      <article class="panel">
+        <h2>Attributions & Licenses</h2>
+        <p>Concept direction: Foster + Navi / Planetary Restoration Archive. Architecture patterns were adapted from the user-supplied <em>Feature Fusion Foundry</em>: deterministic planning, fail-soft optional capabilities, local portability, diagnostics, accessible navigation and explicit provenance/fallback thinking.</p>
+        <p>Application code in this bundle is released under the MIT License; see <a href="./LICENSE.txt">LICENSE.txt</a>. No proprietary code from external projects is included.</p>
+      </article>
+    </section>
+  </main>
+
+  <aside id="right-hud" class="rightbar" aria-label="Progress HUD">
+    <div class="hud-card">
+      <p class="eyebrow">Optional HUD</p>
+      <div class="level-ring"><strong id="hud-level">1</strong><span>level</span></div>
+      <div><strong id="hud-xp">0</strong> XP</div>
+      <div class="xp-track"><i id="xp-bar"></i></div>
+      <small>Cosmetic progress only. No feature is gated.</small>
+    </div>
+    <div class="hud-card">
+      <strong>Today</strong>
+      <div id="hud-today">No action logged yet.</div>
+    </div>
+    <div class="hud-card">
+      <strong>Privacy</strong>
+      <div>Local by default · no telemetry</div>
+    </div>
+  </aside>
+</div>
+
+<div id="search-modal" class="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="search-title">
+    <div class="section-split"><h2 id="search-title">Search the OS</h2><button class="icon-btn" id="close-search" aria-label="Close search">×</button></div>
+    <label class="searchbox"><span>⌕</span><input id="global-search" type="search" autocomplete="off" placeholder="Try privacy, grief, budget, volunteer, career…"></label>
+    <div id="search-results" class="search-results"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="./js/data.js"></script>
+<script src="./js/storage.js"></script>
+<script src="./js/planner.js"></script>
+<script src="./js/diagnostics.js"></script>
+<script src="./js/collaboration.js"></script>
+<script src="./js/app.js"></script>
+</body>
+</html>
